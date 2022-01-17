@@ -1,0 +1,33 @@
+%! Package = cv
+%! Author = martin
+%! Date = 30.06.21
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{aussehen/CV}[2021/06/30 cv theming Package]
+
+\usepackage[ngerman]{babel,isodate}
+
+% moderncv themes
+\moderncvstyle{fancy} % style options are 'casual' (default), 'classic', 'banking', 'oldstyle' and 'fancy'
+\moderncvcolor{blue} % color options 'black', 'blue' (default), 'burgundy', 'green', 'grey', 'orange', 'purple' and 'red'
+
+\usepackage[firstyear=2009,lastyear=2022,marksyr=0.4ex,marksmo=0.2ex]{moderntimeline}
+
+% adjust the page margins
+\usepackage[scale=0.75]{geometry}
+
+% Publikationen numerisch aufzählen
+\renewcommand*{\bibliographyitemlabel}{[\arabic{enumiv}]}
+% Titel der Publikationen ändern
+\renewcommand{\refname}{Veröffentlichungen}
+\bibliographystyle{plain}
+
+% TODO WORKAROUND avoid orphaned section headers
+% https://github.com/moderncv/moderncv/issues/10
+% https://github.com/xdanaux/moderncv/issues/82
+\usepackage{needspace}
+\let\oldsection=\section
+\renewcommand{\section}{
+    \needspace{3\baselineskip}
+    \oldsection
+}
